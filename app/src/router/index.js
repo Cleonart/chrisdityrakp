@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Jurnal from '../views/Jurnal.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,11 @@ const routes = [
     path: '/',
     name: 'dashboard',
     component: Dashboard
+  },
+  {
+    path: '/jurnal',
+    name: 'Jurnal',
+    component: Jurnal
   },
   {
     path: '/tambah-jurnal',

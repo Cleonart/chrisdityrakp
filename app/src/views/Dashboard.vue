@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for Vue.js 2">
-    		<p>For more information visit website</p>
+		<b-jumbotron header="LPPM DLSU" lead="Aplikasi Manajemen Jurnal Internal">
+    		<p>Selamat datang di aplikasi manajemen jurnal internal LPPM Universitas Katolik De La Salle Manado</p>
     		<b-button variant="primary" href="#">More Info</b-button>
   		</b-jumbotron>
 	</div>

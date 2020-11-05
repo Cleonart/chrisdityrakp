@@ -1,8 +1,57 @@
 <template>
   <div id="app container">
     <div class="lnavbar">
-      
+    
+    <b-navbar toggleable="lg" type="dark" variant="success">
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item-dropdown right>
+          <!-- Using 'button-content' slot -->
+          <template #button-content>
+            <b-icon icon="bell" class="mt-2"></b-icon>
+          </template>
+          <b-dropdown-item href="#" v-for="notif in notification">
+            <table style="border:none">
+              <tr>
+                <td><b-icon :icon="notif.icon" class="mt-2"></b-icon></td>
+                <td><span style="margin-left:7px;width:20px;word-wrap: break-word">{{notif.text}}</span></td>
+              </tr>
+            </table>
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
+
+        <b-nav-item-dropdown right>
+          <!-- Using 'button-content' slot -->
+          <template #button-content>
+            <b-avatar icon="star-fill"></b-avatar>
+          </template>
+
+          <b-dropdown-item href="#">Profil
+            <div>
+              <b-avatar variant="primary" text="CL"></b-avatar>
+              <p>Chrisdityra Lengkey</p>
+              <p>51099290100</p>
+            </div>
+          </b-dropdown-item>
+
+          <b-dropdown-item href="#">Keluar</b-dropdown-item>
+
+        </b-nav-item-dropdown>
+
+      </b-navbar-nav>
+
+    </b-collapse>
+
+  </b-navbar>
+
     </div>
+
     <div class="row mr-5" style="z-index:99">
       <div class="col-lg-3">
         <div class="sidebar">
@@ -12,7 +61,10 @@
           </div>
           <span v-for="(item, index) in sidebar_item">
               <div class="sidebar-item" :class="item.class" @click="changeRoute(index)" v-if="item.icon">
-                <b-link :class="item.class +'-text'" class="item ml-4" :href="item.ref"><b-icon :icon="item.icon"></b-icon><span class="ml-3">{{item.title}}</span></b-link>
+                <b-link :class="item.class +'-text'" class="item ml-4" :href="item.ref">
+                  <b-icon :icon="item.icon"></b-icon>
+                  <span class="ml-3">{{item.title}}</span>
+                </b-link>
               </div>
               <p v-else class="ml-4" style="opacity:0.6;font-size:12px;text-transform:uppercase">
                 <b>{{item.title}}</b>
@@ -75,9 +127,16 @@
           {
             title : "Dosen",
             icon : "people",
-            ref   : '/',
+            ref   : '/#/dosen',
             class : ''
           },
+        ],
+
+        notification : [
+          {
+            icon : "journals",
+            text : "Jurnal Realtech Berhasil Ditambah"
+          }
         ]
       }
     },
@@ -120,7 +179,7 @@
   width:100%;
   height:60px;
   position:absolute;
-  z-index:-1;
+  z-index:1;
   box-shadow: 0px 7px 21px 0px rgba(50, 50, 50, 0.1);
 }
 

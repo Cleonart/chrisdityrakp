@@ -9,7 +9,12 @@
 		  </thead>
 		  <tbody>
 		  	<tr v-for="body in table_data.body">
-		  		<th v-for="item in body"><span style="font-weight:normal">{{item.title}}</span></th>
+		  		<th v-for="item in body">
+		  			<span v-if="Array.isArray(item.title)" style="font-weight:normal"> 
+		  				<span v-for="item_data in item.title">{{item_data.toUpperCase()}}; </span>
+		  			</span>
+		  			<span v-else style="font-weight:normal">{{item.title}}</span>
+		  		</th>
 		  		<th><span style="font-weight:normal;font-size:20px;">
 		  			<b-icon style="cursor:pointer;margin-right:5px" icon="arrow-up-right-square-fill" class="text-success"></b-icon>
 		  			<b-icon style="cursor:pointer" icon="archive-fill" class="text-primary"></b-icon>

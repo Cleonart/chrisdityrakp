@@ -32,7 +32,7 @@
             <b-avatar icon="star-fill"></b-avatar>
           </template>
 
-          <b-dropdown-item href="#">
+          <b-dropdown-item href="#/akun">
             <div>
               <p style="text-align:center" class="mb-2 mt-2"><b-avatar variant="primary" text="CL"></b-avatar></p>
               <p style="text-align:center" class="mb-0"><b>Chrisdityra Lengkey</b></p>

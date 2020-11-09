@@ -11,8 +11,10 @@
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.18.1",
     "core-js": "^3.6.5",
+    "filepond": "^4.23.1",
     "v-calendar": "^2.0.2",
     "vue": "^2.6.12",
+    "vue-filepond": "^6.0.3",
     "vue-router": "^3.2.0",
     "vue-select": "^3.10.8"
   },

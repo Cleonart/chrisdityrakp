@@ -5,6 +5,7 @@ import Jurnal from '../views/Jurnal.vue'
 import Dosen from '../views/Dosen.vue'
 import Akun from '../views/Akun.vue'
 import Register from '../views/Register.vue'
+import tambahArtikel from '../views/artikel/tambahArtikel.vue'
 
 Vue.use(VueRouter)
 
@@ -25,12 +26,17 @@ const routes = [
     component: Dosen
   },
   {
-    path: '/tambah-jurnal',
-    name: 'Jurnal_Add',
+    path: '/tambahJurnal',
+    name: 'tambahJurnal',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Jurnal_Add.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/tambahJurnal.vue')
+  },
+  {
+    path: '/tambahArtikel',
+    name: 'Tambah_Artikel',
+    component : tambahArtikel
   },
   {
     path: '/akun',

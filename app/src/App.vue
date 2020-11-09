@@ -112,7 +112,23 @@
           {
             title : "Pengaturan Jurnal",
             icon : "journal-code",
-            ref   : '/',
+            ref   : '/#/pengaturan-jurnal',
+            class : ''
+          },
+          {
+            title : "ARTIKEL"
+          },
+          {
+            title : "Artikel",
+            icon : "files",
+            ref   : '/#/tambah-artikel',
+            class : ''
+
+          },
+          {
+            title : "Tambah Artikel",
+            icon : "file-earmark-plus",
+            ref   : '/#/tambahArtikel',
             class : ''
           },
           {

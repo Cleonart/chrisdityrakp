@@ -106,7 +106,7 @@
           {
             title : "Tambah Jurnal",
             icon : "journal-plus",
-            ref   : '/#/tambah-jurnal',
+            ref   : '/#/tambahJurnal',
             class : ''
           },
           {
@@ -121,9 +121,8 @@
           {
             title : "Artikel",
             icon : "files",
-            ref   : '/#/tambah-artikel',
+            ref   : '/#/artikel',
             class : ''
-
           },
           {
             title : "Tambah Artikel",

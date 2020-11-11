@@ -6,6 +6,7 @@ import Dosen from '../views/Dosen.vue'
 import Akun from '../views/Akun.vue'
 import Register from '../views/Register.vue'
 import tambahArtikel from '../views/artikel/tambahArtikel.vue'
+import artikel from '../views/artikel/artikel.vue'
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,11 @@ const routes = [
     path: '/tambahArtikel',
     name: 'Tambah_Artikel',
     component : tambahArtikel
+  },
+  {
+    path: '/artikel',
+    name: 'Artikel',
+    component : artikel
   },
   {
     path: '/akun',

@@ -3,12 +3,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<h3>Daftar Jurnal</h3>
-					<p>Kelola daftar jurnal disini</p>
+					<h3>Daftar Artikel</h3>
+					<p>Kelola daftar artikel disini</p>
 				</div>
 				<div class="col mt-3" style="display:flex">
-					<b-form-input v-model="jurnal_search" size="md" class="mr-sm-2" placeholder="Cari Jurnal"></b-form-input>
-  					<b-form-select v-model="jurnal_select" :options="publikasi_jurnal"></b-form-select>
+					<b-form-input v-model="artikel_search" size="md" class="mr-sm-2" placeholder="Cari Artikel"></b-form-input>
 				</div>
 			</div>
 		</div>
@@ -20,8 +19,8 @@
 
 <script type="text/javascript">
 	
-	import {API_ENDPOINT} from '../functions/universal.js';
-	import Tables from './Component/Tables.vue';
+	import {API_ENDPOINT} from '../../functions/universal.js';
+	import Tables from '../Component/Tables.vue';
 	const axios = require('axios');
 
 	export default{
@@ -30,12 +29,8 @@
 				table_data : {
 					
 				},
-				publikasi_jurnal:[
-					{value: null, text: 'Pilih Jurnal'}
-				],
 
-				jurnal_search:null,
-				jurnal_select:null
+				jurnal_search:null
 			}
 		},
 		components : {
@@ -45,7 +40,7 @@
 			
 			getData : function(){
 				var app = this;
-				axios.get(API_ENDPOINT + "/jurnal/get.php")
+				axios.get(API_ENDPOINT + "/artikel/get.php")
 					 .then(function(response){
 					 	app.table_data = response.data
 					 })

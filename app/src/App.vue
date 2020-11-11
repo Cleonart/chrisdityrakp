@@ -60,12 +60,15 @@
             <h5 class="mb-4">LPPM DLSU</h5>
           </div>
           <span v-for="(item, index) in sidebar_item">
-              <div class="sidebar-item" :class="item.class" @click="changeRoute(index)" v-if="item.icon">
-                <b-link :class="item.class +'-text'" class="item ml-4" :href="item.ref">
-                  <b-icon :icon="item.icon"></b-icon>
-                  <span class="ml-3">{{item.title}}</span>
-                </b-link>
-              </div>
+
+              <b-link class="item" style="text-decoration: none;" v-if="item.icon" @click="changeRoute(index)" :href="item.ref">
+                <div class="sidebar-item" :class="item.class" >
+                  <span :class="item.class +'-text'" class="ml-4" >
+                    <b-icon :icon="item.icon"></b-icon>
+                    <span class="ml-3">{{item.title}}</span>
+                  </span>
+                </div>
+              </b-link>
               <p v-else class="ml-4" style="opacity:0.6;font-size:12px;text-transform:uppercase">
                 <b>{{item.title}}</b>
               </p>
@@ -131,18 +134,12 @@
             class : ''
           },
           {
-            title : "AKUN"
+            title : "BANTUAN"
           },
           {
             title : "Forum",
             icon : "chat",
             ref   : '/',
-            class : ''
-          },
-          {
-            title : "Dosen",
-            icon : "people",
-            ref   : '/#/dosen',
             class : ''
           },
         ],

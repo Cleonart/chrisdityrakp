@@ -3,15 +3,15 @@
 		<table class="table table-striped mt-4">
 		  <thead>
 		    <tr>
-		      <th scope="col" v-for="head in table_data.head">{{head}}</th>
+		      <th scope="col" v-for="head in table_data_head">{{head}}</th>
 		      <th scope="col">Aksi</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		  	<tr v-for="body in table_data.body">
-		  		<th v-for="item in body">
+		  	<tr v-for="body in table_data_body">
+		  		<th v-for="item in body" v-if="item.type != 'id'">
 		  			<span v-if="Array.isArray(item.title)" style="font-weight:normal"> 
-		  				<span v-for="item_data in item.title">{{item_data.toUpperCase()}}; </span>
+		  				<span v-for="item_data in item.title">{{item_data}}; </span>
 		  			</span>
 		  			<span v-else style="font-weight:normal">{{item.title}}</span>
 		  		</th>
@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
 	export default{
-		props: ['table_data'],
+		props: ['table_data_head', 'table_data_body'],
 		data(){
 			return{
 

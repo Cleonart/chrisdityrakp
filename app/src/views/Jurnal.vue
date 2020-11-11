@@ -13,7 +13,7 @@
 			</div>
 		</div>
 
-		<Tables :table_data="table_data"></Tables>
+		<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
 
 	</div>
 </template>
@@ -34,24 +34,50 @@
 					{value: null, text: 'Pilih Jurnal'}
 				],
 
-				jurnal_search:null,
+				jurnal_search:"",
 				jurnal_select:null
 			}
 		},
 		components : {
 			Tables
 		},
+
 		methods : {
 			
 			getData : function(){
 				var app = this;
 				axios.get(API_ENDPOINT + "/jurnal/get.php")
 					 .then(function(response){
-					 	app.table_data = response.data
+					 	app.table_data = response.data;
+					 	app.publikasi_jurnal = response.data.option;
 					 })
 					 .catch(function(error){
 
 					 })
+			}
+
+		},
+
+		computed : {
+
+			filteredData(){
+				return this.table_data.body.filter(data => {
+					
+					if(this.jurnal_select != null){
+
+						if(this.jurnal_select == data[0].title){
+							let datas = data[1].title.toLowerCase().includes(this.jurnal_search);
+							return datas;
+						}
+						else{
+							return 0;
+						}
+
+					}
+
+					let datas = data[1].title.toLowerCase().includes(this.jurnal_search);
+					return datas;
+				})
 			}
 
 		},

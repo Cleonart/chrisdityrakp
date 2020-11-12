@@ -113,6 +113,12 @@
             class : ''
           },
           {
+            title : "Laporan Tambah Jurnal",
+            icon : "journal-arrow-down",
+            ref   : '/#/laporan-tambahJurnal',
+            class : ''
+          },
+          {
             title : "Pengaturan Jurnal",
             icon : "journal-code",
             ref   : '/#/pengaturan-jurnal',

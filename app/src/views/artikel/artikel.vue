@@ -15,8 +15,7 @@
 				</div>
 				</div>
 			</div>
-
-		<Tables :table_data_head="table_data.head" :table_data_body="table_data.body"></Tables>
+		<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
 
 	</div>
 </template>
@@ -63,9 +62,22 @@
 			},
 
 			filteredData(){
-
+				return this.table_data.body.filter(data => {
+					if(this.jurnal_select == null){
+						return data;
+					}
+					else{
+						if(this.jurnal_edisi_select != null){
+							if(this.jurnal_edisi_select == data[1].title){
+								return data;
+							}
+						}
+						else{
+							return data;
+						}
+					}
+				})
 			}
-
 		},
 
 		methods : {

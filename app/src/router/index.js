@@ -7,6 +7,7 @@ import Akun from '../views/Akun.vue'
 import Register from '../views/Register.vue'
 import tambahArtikel from '../views/artikel/tambahArtikel.vue'
 import artikel from '../views/artikel/artikel.vue'
+import laporan_tambahJurnal from '../views/laporan_tambahJurnal'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/tambahJurnal.vue')
+  },
+  {
+    path: '/laporan-tambahJurnal',
+    name: 'laporan-tambahJurnal',
+    component : laporan_tambahJurnal
   },
   {
     path: '/tambahArtikel',

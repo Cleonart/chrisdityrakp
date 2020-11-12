@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 02:22 PM
+-- Generation Time: Nov 12, 2020 at 03:25 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -25,24 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Table structure for table `artikel_daftar`
 --
 
-CREATE TABLE `artikel` (
+CREATE TABLE `artikel_daftar` (
   `artikel_id` int(10) NOT NULL,
-  `artikel_judul` varchar(500) NOT NULL,
-  `artikel_abstract` varchar(1500) NOT NULL,
+  `artikel_judul` varchar(200) NOT NULL,
+  `artikel_halaman` varchar(100) NOT NULL,
   `artikel_keyword` varchar(100) DEFAULT NULL,
   `artikel_filepath` varchar(100) NOT NULL,
-  `artikel_jurnal_id` int(20) NOT NULL
+  `artikel_jurnal_id` int(20) NOT NULL,
+  `jurnal_edisi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `artikel`
+-- Dumping data for table `artikel_daftar`
 --
 
-INSERT INTO `artikel` (`artikel_id`, `artikel_judul`, `artikel_abstract`, `artikel_keyword`, `artikel_filepath`, `artikel_jurnal_id`) VALUES
-(202016001, 'PERBANDINGAN QUALITY OF SERVICE PROTOKOL KOMUNIKASI DATA PADA SISTEM DETEKSI ASAP ROKOK BERBASIS INT', 'Asap rokok adalah salah satu asap beracun yang berbahaya bagi kesehatan manusia dari sisi biologis maupun sisi kimiawi. Pada penelitian ini, penulis mengimplementasikan\r\nsebuah sistem deteksi asap rokok berbasis The Internet of Things menggunakan sensor MQ135, Arduino board dan NodeMCU. Kemudian, penulis melakukan perbandingan Quality of Service dari dua protokol komunikasi data, yaitu Transmission Control Protocol dan User Datagram Protocol pada sistem tersebut. Parameter Quality of Service dibandingkan saat proses pengiriman data adalah delay dan data loss. Untuk setiap protokol, simulasi dilakukan selama 1 jam dengan pengiriman data setiap 5 detik, 10 detik, sampai 1 menit. Hasil yang diperoleh adalah data loss dengan Transmission Control Protocol lebih rendah dari pada data loss dengan User Datagram Protocol, sedangkan delay dengan User Datagram Protocol lebih rendah dari pada delay dengan Transmission Control Protocol.', NULL, 'https://ejournal.unikadelasalle.ac.id/realtech/article/view/129', 202);
+INSERT INTO `artikel_daftar` (`artikel_id`, `artikel_judul`, `artikel_halaman`, `artikel_keyword`, `artikel_filepath`, `artikel_jurnal_id`, `jurnal_edisi_id`) VALUES
+(2010160101, 'The Persistent Love in Charlotte Bronte\'s Jane Eyre', '1-13', 'Persistent,Love', 'https://ejournal.unikadelasalle.ac.id/lasallian/article/view/44', 201, 20101601),
+(2010160102, 'Hubungan Status Gizi dengan Kejadian ISPA pada Balita di Wilayah Kerja Puskesmas Kendahe Kabupaten Sangihe', '64-67', 'Acute respiratory infections,Nutritional status,Toddlers', 'https://ejournal.unikadelasalle.ac.id/lasallian/article/view/107', 201, 20101601),
+(2010160201, 'Pengaruh Bar Terhadap Kunjungan Tamu di Hotel IBIS Manado', '97-101', 'Bar,Guest visit,Service quality', 'https://ejournal.unikadelasalle.ac.id/lasallian/article/view/103', 201, 20101602),
+(2010160202, 'Ekspolorasi Pengalaman Penderita Hipertensi Terhadap Kepatuhan Minum Obat di Wilayah Kerja Puskesmas Lansot Kota Tomohon', '93-96', 'Hypertension,Hypertension Treatment,Medication Adherence', 'https://ejournal.unikadelasalle.ac.id/lasallian/article/view/102', 201, 20101602),
+(2020160101, 'Perbandingan Quality of Service Protokol Komunikasi Data pada Sistem Deteksi Asap Rokok Berbasis Internet of Things', '19-24', NULL, 'https://ejournal.unikadelasalle.ac.id/realtech/article/view/129', 202, 20201601);
 
 -- --------------------------------------------------------
 
@@ -51,7 +56,7 @@ INSERT INTO `artikel` (`artikel_id`, `artikel_judul`, `artikel_abstract`, `artik
 --
 
 CREATE TABLE `artikel_penulis` (
-  `id_artikel` int(10) NOT NULL,
+  `artikel_id` int(15) NOT NULL,
   `id_artikel_penulis` int(10) NOT NULL,
   `nama_artikel_penulis` varchar(50) NOT NULL,
   `status_artikel_penulis` int(5) NOT NULL
@@ -61,8 +66,13 @@ CREATE TABLE `artikel_penulis` (
 -- Dumping data for table `artikel_penulis`
 --
 
-INSERT INTO `artikel_penulis` (`id_artikel`, `id_artikel_penulis`, `nama_artikel_penulis`, `status_artikel_penulis`) VALUES
-(202016001, 301003, 'Junaidy Budi Sanger, S.Kom., M.Kom', 1);
+INSERT INTO `artikel_penulis` (`artikel_id`, `id_artikel_penulis`, `nama_artikel_penulis`, `status_artikel_penulis`) VALUES
+(2020160101, 301003, 'Junaidy Budi Sanger', 3),
+(2020160101, 301004, 'Pether V B Romony', 1),
+(2020160101, 301005, 'Lanny Sitanayah', 2),
+(2010160102, 302002, 'Natalia E Rakinaung', 1),
+(2010160202, 302004, 'Fierlly T B Wolff', 2),
+(2010160101, 306002, 'Oktavianus Semuel', 1);
 
 -- --------------------------------------------------------
 
@@ -72,7 +82,7 @@ INSERT INTO `artikel_penulis` (`id_artikel`, `id_artikel_penulis`, `nama_artikel
 
 CREATE TABLE `fakultas` (
   `fakultas_id` int(10) NOT NULL,
-  `fakultas_nama` varchar(20) NOT NULL
+  `fakultas_nama` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -80,8 +90,14 @@ CREATE TABLE `fakultas` (
 --
 
 INSERT INTO `fakultas` (`fakultas_id`, `fakultas_nama`) VALUES
-(1, 'Teknik'),
-(2, 'Keperawatan');
+(1, 'Universitas'),
+(2, 'Teknik'),
+(3, 'Keperawatan'),
+(4, 'Ekonomi'),
+(5, 'Hukum'),
+(6, 'Pertanian'),
+(7, 'Pariwisata'),
+(8, 'Pendidikan');
 
 -- --------------------------------------------------------
 
@@ -91,16 +107,21 @@ INSERT INTO `fakultas` (`fakultas_id`, `fakultas_nama`) VALUES
 
 CREATE TABLE `jurnal` (
   `jurnal_id` int(10) NOT NULL,
-  `jurnal_nama` varchar(20) NOT NULL
+  `jurnal_nama` varchar(20) NOT NULL,
+  `jurnal_editorial_id` int(11) NOT NULL,
+  `jurnal_institusi` varchar(20) NOT NULL,
+  `jurnal_status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jurnal`
 --
 
-INSERT INTO `jurnal` (`jurnal_id`, `jurnal_nama`) VALUES
-(201, 'Lasallian'),
-(202, 'RealTech');
+INSERT INTO `jurnal` (`jurnal_id`, `jurnal_nama`, `jurnal_editorial_id`, `jurnal_institusi`, `jurnal_status`) VALUES
+(201, 'Lasallian', 101001, 'Universitas', 1),
+(202, 'RealTech', 101002, 'Teknik', 1),
+(203, 'Innovative', 101003, 'Ekonomi', 1),
+(207, 'Bapontar', 101007, 'Pariwisata', 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +143,9 @@ CREATE TABLE `jurnal_edisi` (
 --
 
 INSERT INTO `jurnal_edisi` (`jurnal_id`, `jurnal_edisi_id`, `jurnal_edisi_volume`, `jurnal_edisi_nomor`, `jurnal_edisi_tahun`, `jurnal_edisi_publish`) VALUES
-(202, 202016, 16, 1, 2020, '2020-04-30');
+(201, 20101601, 16, 1, 2019, '2019-02-28'),
+(201, 20101602, 16, 2, 2019, '2019-09-30'),
+(202, 20201601, 16, 1, 2020, '2020-04-30');
 
 -- --------------------------------------------------------
 
@@ -143,16 +166,19 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`pengguna_id`, `username`, `pengguna_nama`, `pengguna_sandi`, `pengguna_status`) VALUES
-(101001, 'jbs', 'Junaidy Budi Sanger', 'jbs123', 1);
+(101002, 'is', 'Immanuela Saputro', 'imma123', 2),
+(101003, 'ls', 'Loureine Sumual', 'loureine', 2),
+(101007, 'Abc', 'Aaaannn', 'jung', 2),
+(101999, 'jbs', 'Junaidy Budi Sanger', 'jbs123', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `artikel`
+-- Indexes for table `artikel_daftar`
 --
-ALTER TABLE `artikel`
+ALTER TABLE `artikel_daftar`
   ADD PRIMARY KEY (`artikel_id`);
 
 --

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import Beranda from '../views/Beranda.vue'
 import Jurnal from '../views/Jurnal.vue'
 import Dosen from '../views/Dosen.vue'
 import Akun from '../views/Akun.vue'
@@ -14,8 +14,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'dashboard',
-    component: Dashboard
+    name: 'Beranda',
+    component: Beranda
   },
   {
     path: '/jurnal',

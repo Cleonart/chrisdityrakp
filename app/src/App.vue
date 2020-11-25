@@ -92,7 +92,7 @@
         auth_level : 1,
         sidebar_item : [
           {
-            title : "Dashboard",
+            title : "Beranda",
             icon  : 'house',
             ref   : '/#/',
             class : 'active'
@@ -116,12 +116,6 @@
             title : "Laporan Tambah Jurnal",
             icon : "journal-arrow-down",
             ref   : '/#/laporan-tambahJurnal',
-            class : ''
-          },
-          {
-            title : "Pengaturan Jurnal",
-            icon : "journal-code",
-            ref   : '/#/pengaturan-jurnal',
             class : ''
           },
           {

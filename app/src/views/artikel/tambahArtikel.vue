@@ -17,10 +17,10 @@
           					placeholder="Judul Artikel yang Dipublish"></b-form-input>
         </b-form-group>
 
-        <!-- Author -->
-	  	<p class="mt-3 mb-1">Author</p>
-	  	<v-select taggable multiple push-tags placeholder= "Masukkan Nama Author" v-model="artikel.author"/>
-	  	<p class="mt-1" style="font-size:12px; opacity:0.6">*Tulislah mulai dari Author Pertama</p>
+        <!-- Penulis -->
+	  	<p class="mt-3 mb-1">Penulis</p>
+	  	<v-select taggable multiple push-tags placeholder= "Masukkan Nama Penulis" v-model="artikel.penulis"/>
+	  	<p class="mt-1" style="font-size:12px; opacity:0.6">*Tulislah mulai dari Penulis Pertama</p>
 
 	  	<!-- Tanggal Publikasi Artikel -->
 	  	<p class="mt-3 mb-1">Tanggal Publikasi Artikel</p>
@@ -37,9 +37,9 @@
 		    </template>
 	  	</vc-date-picker>
 
-	  	<!-- Abstract -->
-	  	<p class="mt-3 mb-1">Abstract</p>
-	  	<b-form-textarea id="textarea" v-model="artikel.abstract" placeholder="Tambahkan Abstract..." rows="3" max-rows="6">
+	  	<!-- Abstrak -->
+	  	<p class="mt-3 mb-1">Abstrak</p>
+	  	<b-form-textarea id="textarea" v-model="artikel.abstrak" placeholder="Tambahkan Abstrak..." rows="3" max-rows="6">
 	  	</b-form-textarea>
 
 		<file-pond
@@ -81,9 +81,9 @@
 
 				artikel: {
 					publikasi_jurnal : null,
-					author : null,
+					penulis : null,
 					publikasi_tanggal : null,
-					abstract : null
+					abstrak : null
 				}
 
 			}

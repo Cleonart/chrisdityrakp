@@ -139,7 +139,7 @@
           {
             title : "Forum",
             icon : "chat",
-            ref   : '/',
+            ref   : '/#/forum',
             class : ''
           },
         ],

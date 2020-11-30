@@ -8,6 +8,7 @@ import Register from '../views/Register.vue'
 import tambahArtikel from '../views/artikel/tambahArtikel.vue'
 import artikel from '../views/artikel/artikel.vue'
 import laporan_tambahJurnal from '../views/laporan_tambahJurnal'
+import Forum from '../views/Forum.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/forum',
+    name: 'Forum',
+    component: Forum
   }
 ]
 

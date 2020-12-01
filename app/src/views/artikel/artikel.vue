@@ -1,27 +1,63 @@
 <template>
 	<div>
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h3>Daftar Artikel</h3>
-					<p>Kelola daftar artikel disini</p>
-				</div>
-				<div class="col-7 mt-3" style="display:flex">
-					<b-form-input v-model="artikel_search" size="md" class="mr-2" placeholder="Cari Artikel"></b-form-input>
-					<b-form-select v-model="jurnal_select" class="mr-2"  :options="jurnal_option"></b-form-select>
-					<transition name="fade" mode="out-in">
-  						<b-form-select v-if="jurnal_select != null" v-model="jurnal_edisi_select"  :options="editionJurnal"></b-form-select>
-					</transition>
-				</div>
-				</div>
-			</div>
-		<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
 
+			<h3 class="title mb-2">Daftar Artikel</h3>
+			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal artikel disini</p>
+
+			 <hr class="is-visible is-soft">
+
+			<div class="row mt-2">
+
+				<!-- PILIH JURNAL -->
+				<div class="col-2 pl-0">
+					<p class="control has-icons-right">
+						<select class="input ml-2 is-rounded" v-model="jurnal_select">
+							<option v-for="option in jurnal_option" :value="option.value">{{option.text}}</option>
+						</select>
+						<svg class="icon is-right"><use xlink:href="../../assets/bds-icons.min.svg#cross-g"></use></svg>
+					</p>
+				</div>
+
+				<!-- PILIH EDISI -->
+				<div class="col-3 pl-0">
+					<p class="control has-icons-right">
+						<select class="input ml-2 is-rounded" v-model="jurnal_edisi_select">
+							<option v-for="option in editionJurnal" :value="option.value">{{option.text}}</option>
+						</select>
+						<svg class="icon is-right"><use xlink:href="../../assets/bds-icons.min.svg#cross-g"></use></svg>
+					</p>
+				</div>
+
+				<div class="col-1"></div>
+
+				<div class="col">
+					<p class="control has-icons-left">
+			    		<input v-model="artikel_search" placeholder="Cari Artikel.." class="input is-rounded">
+					    <svg class="icon is-left"><use xlink:href="../../assets/bds-icons.min.svg#search-g"></use></svg>
+					    <svg class="icon is-right"><use xlink:href="media/bds-icons.min.svg#cross-g"></use></svg>
+					</p>
+				</div>
+
+				<div>
+					<div class="button is-rounded is-success">
+					    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#plus-g"></use></svg>
+					    <span>Artikel</span>
+					</div>
+				</div>
+
+			</div>
+			
+			<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
+		</div>
 	</div>
 </template>
 
+<style type="text/css">
+	@import '../../../node_modules/biings-ds/build/bds.css';
+</style>
+
 <script type="text/javascript">
-	
 	import {API_ENDPOINT} from '../../functions/universal.js';
 	import Tables from '../Component/Tables.vue';
 	const axios = require('axios');

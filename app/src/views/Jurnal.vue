@@ -1,11 +1,9 @@
 <template>
 	<div>
 		<div class="container">
+			<h3>Daftar Jurnal ({{table_data.body.length}})</h3>
+			<p>Kelola daftar jurnal disini</p>
 			<div class="row">
-				<div class="col">
-					<h3>Daftar Jurnal</h3>
-					<p>Kelola daftar jurnal disini</p>
-				</div>
 				<div class="col mt-3" style="display:flex">
 					<b-form-input v-model="jurnal_search" size="md" class="mr-sm-2" placeholder="Cari Jurnal"></b-form-input>
   					<b-form-select v-model="jurnal_select" :options="publikasi_jurnal"></b-form-select>
@@ -27,9 +25,7 @@
 	export default{
 		data(){
 			return{
-				table_data : {
-					
-				},
+				table_data : [],
 				publikasi_jurnal:[
 					{value: null, text: 'Pilih Jurnal'}
 				],

@@ -27,6 +27,7 @@
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown right>
+          
           <!-- Using 'button-content' slot -->
           <template #button-content>
             <b-avatar icon="star-fill"></b-avatar>
@@ -82,11 +83,18 @@
         </transition>
       </div>
     </div>
+    <Chat>
+    </Chat>
   </div>
 </template>
 
 <script>
+  import Chat from './views/chat/chat.vue';
+
   export default{
+    components : {
+        Chat
+    },
     data(){
       return{
         auth_level : 1,

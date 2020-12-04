@@ -1,58 +1,96 @@
 <template>
 	<div>
-		<h3>Tambah Artikel</h3>
+		
+		<div class="container pt-3">
+			<div class="row">
 
-		<!-- Artikel Publikasi Jurnal -->
-	    <p class="mt-3 mb-1">Jurnal</p>
-	  	<b-form-select v-model= "artikel.publikasi_jurnal" :options="publikasi_jurnal"></b-form-select>
+				<div class="col-12">
+					<h3 class="title mb-2">Tambah Artikel</h3>
+					<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal artikel disini</p>
+				</div>
 
-		<b-form-group	class="mt-3 mb-1"
-						id="input-group-1"
-        				label="Judul Artikel"
-        				label-for="input-1">
+				<div class="col pr-0">
+					<div class="field select">
+					    <label for="artikel_jurnal" class="label">Pilih Jurnal</label>
+					    <select id="artikel_jurnal">
+					        <option value="1">Option 1</option>
+					        <option value="2">Option 2</option>
+					        <option value="3">Option 3</option>
+					    </select>
+					</div>
+				</div>
 
-        	<b-form-input 	id="input-1"
-        				    type="text"
-          					required
-          					placeholder="Judul Artikel yang Dipublish"></b-form-input>
-        </b-form-group>
+				<div class="col">
+					<div class="field select">
+					    <label for="artikel_edisi" class="label">Pilih Edisi</label>
+					    <select id="artikel_edisi">
+					        <option value="1">Option 1</option>
+					        <option value="2">Option 2</option>
+					        <option value="3">Option 3</option>
+					    </select>
+					</div>
+				</div>
 
-        <!-- Penulis -->
-	  	<p class="mt-3 mb-1">Penulis</p>
-	  	<v-select taggable multiple push-tags placeholder= "Masukkan Nama Penulis" v-model="artikel.penulis"/>
-	  	<p class="mt-1" style="font-size:12px; opacity:0.6">*Tulislah mulai dari Penulis Pertama</p>
+				<div class="col-12 mt-3">
+					<div class="field">
+				        <label for="artikel_judul" class="label">Judul Artikel</label>
+				        <input id="artikel_judul" class="input" type="text" placeholder="Masukan judul artikel..">
+				    </div>
+				</div>
 
-	  	<!-- Tanggal Publikasi Artikel -->
-	  	<p class="mt-3 mb-1">Tanggal Publikasi Artikel</p>
-	  	<vc-date-picker class="inline-block h-full" mode="date" v-model="artikel.publikasi_tanggal">
-		    <template v-slot="{ inputValue, togglePopover }">
-		      <div class="flex items-center">
-		        <input
-		          :value="inputValue"
-		          placeholder="Pilih tanggal"
-		          class="bg-white form-control text-gray-700 w-full py-1 px-2 appearance-none border rounded-r focus:outline-none focus:border-blue-500" @click="togglePopover({ placement: 'auto-start' })"
-		          readonly
-		        />
-		      </div>
-		    </template>
-	  	</vc-date-picker>
+				<div class="col-12 mt-3">
+				   	<v-select taggable multiple push-tags placeholder= "Masukkan Nama Penulis" style="border:none" v-model="artikel.penulis"/>
+				</div>
 
-	  	<!-- Abstrak -->
-	  	<p class="mt-3 mb-1">Abstrak</p>
-	  	<b-form-textarea id="textarea" v-model="artikel.abstrak" placeholder="Tambahkan Abstrak..." rows="3" max-rows="6">
-	  	</b-form-textarea>
+				<div class="col-12 mt-3">
+					<div class="field" style="border:1px solid rgba(26,14,35,.125);border-radius: 5px">
+				        <label for="artikel_judul" class="label">Tanggal Publikasi Artikel</label>
+				        <vc-date-picker class="inline-block h-full" mode="date" v-model="artikel.publikasi_tanggal">
+						    <template v-slot="{ inputValue, togglePopover }">
+						      <div class="flex items-center">
+						        <input
+						          style="width: 100%;padding-bottom: 10px; border:none;padding-left: 15px;margin-top: 35px;border-radius: 5px;"
+						          :value="inputValue"
+						          placeholder="Pilih tanggal"
+						          @click="togglePopover({ placement: 'auto-start' })"
+						          readonly
+						        />
+						      </div>
+						    </template>
+					  	</vc-date-picker>
+				    </div>
+				</div>
 
-		<file-pond
-			class="mt-3 mb-1"
-        	name="test"
-        	ref="pond"
-        	label-idle="Letakan file disini..."/>
+				<div class="col-12 mt-3">
+					<div class="field">
+				    <label for="textfield" class="label">Abstrak</label>
+				        <textarea id="textfield" class="textarea" placeholder="Abstrak..."></textarea>
+				    </div>
+				</div>
 
-        <b-button class="mt-2 mb-1" variant="success">Tambah Artikel</b-button>
+				<div class="col-12">
+					<file-pond
+						class="mt-3 mb-1"
+			        	name="test"
+			        	ref="pond"
+			        	label-idle="Letakan file disini..."/>
+				</div>
 
+				<div class="col-12 mb-5">
+					<div class="button is-success w-100">
+					    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#send-g"></use></svg>
+					    <span>Tambah Artikel</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
-
+<style type="text/css">
+	.vs__dropdown-toggle{
+		border:none;
+	}
+</style>
 <script>
 	
 	import vueFilePond from 'vue-filepond';

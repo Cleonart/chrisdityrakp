@@ -1,16 +1,15 @@
 <template>
 	<div>
-		<div class="container">
+		<div class="container pt-3">
 
 			<h3 class="title mb-2">Daftar Artikel</h3>
 			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal artikel disini</p>
 
-			 <hr class="is-visible is-soft">
 
-			<div class="row mt-2">
+			<div class=" mt-2 box is-floating" style="display: flex;background: #E5F5EE;padding-bottom: 5px;border-radius:5px;-webkit-box-shadow: none;">
 
 				<!-- PILIH JURNAL -->
-				<div class="col-2 pl-0">
+				<div class="col-3 pl-0" style="margin-left: -5px">
 					<p class="control has-icons-right">
 						<select class="input ml-2 is-rounded" v-model="jurnal_select">
 							<option v-for="option in jurnal_option" :value="option.value">{{option.text}}</option>
@@ -40,10 +39,12 @@
 				</div>
 
 				<div>
-					<div class="button is-rounded is-success">
-					    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#plus-g"></use></svg>
-					    <span>Artikel</span>
-					</div>
+					<router-link to="/tambahArtikel" style="text-decoration: none;">
+						<div class="button is-rounded is-success">
+						    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#plus-g"></use></svg>
+						    <span>Artikel</span>
+						</div>
+					</router-link>
 				</div>
 
 			</div>
@@ -68,7 +69,7 @@
 				table_data : {},
 				jurnal_edisi : [{value : null, text : "Pilih Edisi"}],
 				jurnal_option : [],
-				artikel_search : '',
+				artikel_search : "",
 				jurnal_select : null,
 				jurnal_edisi_select : null,
 				jurnal_search:null
@@ -100,16 +101,20 @@
 			filteredData(){
 				return this.table_data.body.filter(data => {
 					if(this.jurnal_select == null){
-						return data;
+						let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
+						return data_filter;
 					}
+
 					else{
 						if(this.jurnal_edisi_select != null){
 							if(this.jurnal_edisi_select == data[1].title){
-								return data;
+								let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
+								return data_filter;
 							}
 						}
 						else{
-							return data;
+							let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
+							return data_filter;
 						}
 					}
 				})

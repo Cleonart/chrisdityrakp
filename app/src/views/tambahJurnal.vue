@@ -16,13 +16,12 @@
 			  		</div> 
 			  	</div>
 			  	
-
 			  	<!-- Pengelola Jurnal -->
 			  	<div class="col-12 mt-3">
 					<div class="field select">
 					    <label for="artikel_edisi" class="label">Pilih Institusi</label>
-					    <select v-model="fakultas">
-					        <option v-for="option in fakultas" v-bind:value="option.value"></option>
+					    <select v-model="institution_select">
+					        <option v-for="option in fakultas" :value="option.value">{{option.text}}</option>
 					    </select>
 					</div>
 				</div>
@@ -59,7 +58,9 @@
 				jurnal: { 
 					nama : null,
 					institusi : null
-				}
+				},
+
+				institution_select : null
 			}
 		},
 

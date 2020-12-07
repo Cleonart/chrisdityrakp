@@ -6,10 +6,9 @@
 
 				<div class="col-12">
 					<h3 class="title mb-2">Tambah Artikel</h3>
-					<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal artikel disini</p>
 				</div>
 
-				<div class="col pr-0">
+				<div class="col pr-0 mt-3">
 					<div class="field select">
 					    <label for="artikel_jurnal" class="label">Pilih Jurnal</label>
 					    <select id="artikel_jurnal">
@@ -20,7 +19,7 @@
 					</div>
 				</div>
 
-				<div class="col">
+				<div class="col mt-3">
 					<div class="field select">
 					    <label for="artikel_edisi" class="label">Pilih Edisi</label>
 					    <select id="artikel_edisi">
@@ -34,7 +33,7 @@
 				<div class="col-12 mt-3">
 					<div class="field">
 				        <label for="artikel_judul" class="label">Judul Artikel</label>
-				        <input id="artikel_judul" class="input" type="text" placeholder="Masukan judul artikel..">
+				        <input id="artikel_judul" class="input" type="text" placeholder="Masukkan judul artikel..">
 				    </div>
 				</div>
 

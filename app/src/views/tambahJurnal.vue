@@ -1,18 +1,41 @@
 <template>
-  <div class="about">
-    <h1>Tambahkan Jurnal</h1>
+	<div>
 
-  	<!-- Nama Jurnal -->
-  	<p class="mt-3 mb-1">Nama Jurnal</p>
-  	<b-form-input placeholder= "Masukkan Nama Jurnal" v-model="jurnal.nama">
-  	</b-form-input> 
+		<div class="container pt-3">
+			<div class="row">
 
-  	<!-- Pengelola Jurnal -->
-  	<p class="mt-3 mb-1">Institusi</p>
-	<b-form-select v-model= "jurnal.institusi" :options="fakultas"></b-form-select>
+				<div class="col-12">
+					<h3 class="title mb-2">Tambah Jurnal</h3>
+				</div>
 
-  	<b-button class="mt-3 mb-1" variant="success">Kirim Permintaan</b-button>
-  	
+			  	<!-- Nama Jurnal -->
+			  	<div class="col-12 mt-3">
+			  		<div class="field">
+			  			<label for="jurnal_nama" class="label">Nama Jurnal</label>
+			  			<input id="jurnal_nama" class="input" type="text" placeholder="Masukkan Nama Jurnal..">
+			  		</div> 
+			  	</div>
+			  	
+
+			  	<!-- Pengelola Jurnal -->
+			  	<div class="col-12 mt-3">
+					<div class="field select">
+					    <label for="artikel_edisi" class="label">Pilih Institusi</label>
+					    <select v-model="fakultas">
+					        <option v-for="option in fakultas" v-bind:value="option.value"></option>
+					    </select>
+					</div>
+				</div>
+
+			  	<div class="col-12 mb-5 mt-3">
+					<div class="button is-success w-100">
+					    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#send-g"></use></svg>
+					    <span>Tambah Jurnal</span>
+					</div>
+				</div>
+
+			</div> 	
+		</div>
   </div>
 </template>
 

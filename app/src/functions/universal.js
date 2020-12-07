@@ -1,1 +1,1 @@
-export let API_ENDPOINT = "http://192.168.43.180/jurnal";
+export let API_ENDPOINT = "http://192.168.1.13/jurnal";

@@ -1,18 +1,46 @@
 <template>
 	<div>
-		<div class="container">
-			<h3>Daftar Jurnal ({{table_data.body.length}})</h3>
-			<p>Kelola daftar jurnal disini</p>
-			<div class="row">
-				<div class="col mt-3" style="display:flex">
-					<b-form-input v-model="jurnal_search" size="md" class="mr-sm-2" placeholder="Cari Jurnal"></b-form-input>
-  					<b-form-select v-model="jurnal_select" :options="publikasi_jurnal"></b-form-select>
+		<div class="container pt-3">
+
+			<h3 class="title mb-2">Daftar Jurnal</h3>
+			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal disini</p>
+
+
+			<div class=" mt-2 box is-floating" style="display: flex;background: #E5F5EE;padding-bottom: 5px;border-radius:5px;-webkit-box-shadow: none;">
+
+				<!-- CARI ARTIKEL -->
+				<div class="col">
+					<p class="control has-icons-left">
+			    		<input v-model="jurnal_search" placeholder="Cari Jurnal.." class="input is-rounded">
+					    <svg class="icon is-left"><use xlink:href="../assets/bds-icons.min.svg#search-g"></use></svg>
+					    <svg class="icon is-right"><use xlink:href="media/bds-icons.min.svg#cross-g"></use></svg>
+					</p>
 				</div>
+
+				<!-- PILIH JURNAL -->
+				<div class="col-3 pl-0" style="margin-left: -5px">
+					<p class="control has-icons-right">
+						<select class="input ml-2 is-rounded" v-model="jurnal_select">
+							<option v-for="option in publikasi_jurnal" :value="option.value">{{option.text}}</option>
+						</select>
+						<svg class="icon is-right"><use xlink:href="../assets/bds-icons.min.svg#cross-g"></use></svg>
+					</p>
+				</div>
+
+				<!-- TAMBAH JURNAL -->
+				<div>
+					<router-link to="/tambahJurnal" style="text-decoration: none;">
+						<div class="button is-rounded is-success">
+						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
+						    <span>Jurnal</span>
+						</div>
+					</router-link>
+				</div>
+
 			</div>
+			
+			<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
 		</div>
-
-		<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
-
 	</div>
 </template>
 

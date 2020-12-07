@@ -25,7 +25,7 @@
 
 			<div class="chat-form">
 				<textarea></textarea>
-				<button> <b-icon icon="cursor-fill" class="rounded-circle bg-success p-2" variant="dark"></b-icon> </button>
+				<button> <b-icon icon="cursor-fill" class="rounded-circle bg-success p-2" variant="white"></b-icon> </button>
 			</div>
 		</div>
 	</div>

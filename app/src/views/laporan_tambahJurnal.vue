@@ -1,14 +1,10 @@
 <template>
 	<div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h3>Laporan Tambah Jurnal</h3>
-					<p>Daftar Permintaan Menambahkan Jurnal</p>
-				</div>
-				<div class="col mt-3" style="display:flex">
-				</div>
-			</div>
+		<div class="container pt-3">
+			
+			<h3 class="title mb-2">Laporan Tambah Jurnal</h3>
+			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal yang akan ditambahkan disini</p>
+
 		</div>
 
 		<Tables :table_data_head="table_data.head" :table_data_body="table_data.body"></Tables>

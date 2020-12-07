@@ -3,7 +3,6 @@
 		
 		<div class="container pt-3">
 			<div class="row">
-
 				<div class="col-12">
 					<h3 class="title mb-2">Tambah Artikel</h3>
 					<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal artikel disini</p>

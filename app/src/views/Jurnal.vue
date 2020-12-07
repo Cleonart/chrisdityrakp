@@ -5,7 +5,6 @@
 			<h3 class="title mb-2">Daftar Jurnal</h3>
 			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal disini</p>
 
-
 			<div class=" mt-2 box is-floating" style="display: flex;background: #E5F5EE;padding-bottom: 5px;border-radius:5px;-webkit-box-shadow: none;">
 
 				<!-- CARI ARTIKEL -->

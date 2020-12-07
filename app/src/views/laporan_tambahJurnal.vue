@@ -1,14 +1,10 @@
 <template>
 	<div>
 		<div class="container pt-3">
-			
 			<h3 class="title mb-2">Laporan Tambah Jurnal</h3>
 			<p class="subtitle has-text-gray is-5 mt-0">Kelola daftar jurnal yang akan ditambahkan disini</p>
-
 		</div>
-
-		<Tables :table_data_head="table_data.head" :table_data_body="table_data.body"></Tables>
-
+		<Tables :table_data_head="table_data.head" admin="true" :table_data_body="table_data.body"></Tables>
 	</div>
 </template>
 
@@ -21,9 +17,7 @@
 	export default{
 		data(){
 			return{
-				table_data : {
-					
-				},
+				table_data : [],
 			}
 		},
 		components : {

@@ -4,11 +4,16 @@ import router from './router'
 import vSelect from 'vue-select'
 import VCalendar from 'v-calendar';
 
+import VueSweetalert2 from 'vue-sweetalert2';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-select/dist/vue-select.css'
 
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+ 
+Vue.use(VueSweetalert2);
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

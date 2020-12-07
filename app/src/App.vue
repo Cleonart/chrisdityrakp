@@ -1,11 +1,8 @@
 <template>
   <div id="app container">
     <div class="lnavbar">
-    
-    <b-navbar toggleable="lg" type="dark" variant="success">
-
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
+      <b-navbar toggleable="lg" type="dark" variant="success">
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
 
       <!-- Right aligned nav items -->
@@ -142,12 +139,12 @@
             class : ''
           },
           {
-            title : "BANTUAN"
+            title : "PENGATURAN"
           },
           {
-            title : "Forum",
-            icon : "chat",
-            ref   : '/#/forum',
+            title : "Akun",
+            icon : "person",
+            ref   : '/#/akun',
             class : ''
           },
         ],

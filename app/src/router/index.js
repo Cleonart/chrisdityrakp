@@ -10,6 +10,10 @@ import artikel from '../views/artikel/artikel.vue'
 import laporan_tambahJurnal from '../views/laporan_tambahJurnal'
 import Forum from '../views/Forum.vue'
 
+//akun
+import Daftar from '../views/akun/daftar';
+import List from '../views/akun/list';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -54,7 +58,12 @@ const routes = [
   {
     path: '/akun',
     name: 'Akun',
-    component: Akun
+    component: List
+  },
+  {
+    path: '/akun/:id',
+    name: 'Akun',
+    component: Daftar
   },
   {
     path: '/register',

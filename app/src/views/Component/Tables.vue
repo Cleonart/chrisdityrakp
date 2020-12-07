@@ -21,7 +21,9 @@
 		  			<span v-else style="font-weight:normal">{{item.title}}</span>
 		  		</th>
 		  		<th>
-		  			<div style="display: flex;font-size: 18px">
+		  			<slot v-bind:body="body"></slot>
+		  			<!--
+		  			<div v-if="!admin" style="display: flex;font-size: 18px">
 		  				<span class="mr-2" :id="'archive' + index">
 		  						<svg class="icon is-right has-fill-primary"><use xlink:href="../../assets/bds-icons.min.svg#unarchive-g"></use></svg>
 		  				</span>
@@ -29,11 +31,22 @@
 		  					<svg class="icon is-right has-fill-success"><use xlink:href="../../assets/bds-icons.min.svg#download-g"></use></svg>
 		  				</span>
 
-		  				<!-- tooltip -->
+		  				tooltip 
 		  				<b-tooltip :target="'archive' + index">Arsipkan</b-tooltip>
 		  				<b-tooltip :target="'download' + index">Unduh</b-tooltip>
-
 		  			</div>
+		  			<div v-else style="font-size: 20px;display:flex;">
+
+		  				<span class="mr-2" :id="'agree' + index">
+		  						<svg class="icon is-right has-fill-success"><use xlink:href="../../assets/bds-icons.min.svg#check-bold-g"></use></svg>
+		  				</span>
+		  				<span class="mr-2" :id="'disagree' + index">
+		  						<svg class="icon is-right has-fill-danger"><use xlink:href="../../assets/bds-icons.min.svg#cross-bold-g"></use></svg>
+		  				</span>
+
+		  				tooltip 
+		  				<b-tooltip :target="'agree' + index">Setujui</b-tooltip>
+		  				<b-tooltip :target="'disagree' + index">Tolak</b-tooltip>-->
 		  		</th>
 		  	</tr>
 
@@ -52,7 +65,7 @@
 
 <script type="text/javascript">
 	export default{
-		props: ['table_data_head', 'table_data_body'],
+		props: ['table_data_head', 'table_data_body', 'admin'],
 		data(){
 			return{
 

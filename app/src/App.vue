@@ -1,15 +1,15 @@
 <template>
   <div id="app container">
+    <!--
     <div class="lnavbar">
       <b-navbar toggleable="lg" type="dark" variant="success">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
 
-      <!-- Right aligned nav items -->
+      
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item-dropdown right>
-          <!-- Using 'button-content' slot -->
           <template #button-content>
             <b-icon icon="bell" class="mt-2"></b-icon>
           </template>
@@ -24,8 +24,6 @@
         </b-nav-item-dropdown>
 
         <b-nav-item-dropdown right>
-          
-          <!-- Using 'button-content' slot -->
           <template #button-content>
             <b-avatar icon="star-fill"></b-avatar>
           </template>
@@ -48,22 +46,22 @@
 
   </b-navbar>
 
-    </div>
+    </div>-->
 
-    <div class="row mr-5" style="z-index:99">
-      <div class="col-lg-3">
-        <div class="sidebar">
-          <div class="m-1 mt-4 ml-4">
-            <p><img src="./assets/logo.png" style="width:60px"></p>
-            <h5 class="mb-4">LPPM DLSU</h5>
+    <div class="row" :class="[loggedIn ? 'mr-5' : '']" style="z-index:99">
+      <div class="col-lg-3" v-if="loggedIn">
+        <div class="sidebar" style="z-index: 0">
+          <div class="m-1 mt-4 ml-4 mb-4">
+            <p><img src="./assets/logo.png" style="width:48px"></p>
+            <p class="title is-5 text-white mb-2"><b>Halo, {{account_name}}!</b></p>
+            <p class="subtitle text-white is-6 mt-0">Silahkan kelola jurnal anda</p>
+            <div style="border-top: 1px solid #fff;width: 35px"></div>
           </div>
           <span v-for="(item, index) in sidebar_item">
-
               <b-link class="item" style="text-decoration: none;" v-if="item.icon" @click="changeRoute(index)" :href="item.ref">
-                <div class="sidebar-item" :class="item.class" >
-                  <span :class="item.class +'-text'" class="ml-4" >
-                    <b-icon :icon="item.icon"></b-icon>
-                    <span class="ml-3">{{item.title}}</span>
+                <div class="sidebar-item" :class="item.class" style="margin-left: 10px;max-width: 200px">
+                  <span :class="item.class +'-text'" class="ml-1" >
+                    <span class="ml-3 text-white" style="font-family: 'Averta';font-weight: bold; font-size: 13.2px;">{{item.title}}</span>
                   </span>
                 </div>
               </b-link>
@@ -71,22 +69,24 @@
                 <b>{{item.title}}</b>
               </p>
             </span>
+            <p @click="logOut()" style="cursor: pointer;background-color:  #e74c3c;color:#FFF;padding-top:7px;padding-bottom:7px;border-radius: 5px; font-size:13px;margin-left:   17px;padding-left:  13px;width: 193px;"><b>LOG OUT</b></p>
         </div>
       </div>
-      <div class="col-lg-9">
-        <div style="margin-top:90px;"></div>
+      <!-- if logged in -->
+      <div :class="[loggedIn ? 'col-lg-9' : 'col-lg-12']">
+        <div style="margin-top:20px;"></div>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
       </div>
     </div>
-    <Chat>
-    </Chat>
+    <Chat v-if="loggedIn"></Chat>
   </div>
 </template>
 
 <script>
   import Chat from './views/chat/chat.vue';
+  import {validateLoginCredential, getAccountName, loggedIn} from './functions/universal.js';
 
   export default{
     components : {
@@ -94,6 +94,8 @@
     },
     data(){
       return{
+        account_name : null,
+        loggedIn : false,
         auth_level : 1,
         sidebar_item : [
           {
@@ -115,6 +117,12 @@
             title : "Tambah Jurnal",
             icon : "journal-plus",
             ref   : '/#/tambahJurnal',
+            class : ''
+          },
+          {
+            title : "Tambah Edisi",
+            icon : "journal-plus",
+            ref : '/#/tambahEdisi',
             class : ''
           },
           {
@@ -167,28 +175,37 @@
            this.sidebar_item[i].class = ""; 
           }
         }
+      },
+      logOut : function(){
+        sessionStorage.clear();
+        this.loggedIn = loggedIn();
+        validateLoginCredential(this.$router);
       }
+    },
+    created(){
+     console.log(this.$route);
+      this.loggedIn = loggedIn();
+      validateLoginCredential(this.$router);
+      this.account_name = getAccountName();
     }
   }
 </script>
 
 <style>
 
-.active::before{
-  width:4px;
-  height:20px;
-  content:'1';
-  color:transparent;
-  background-color:#2ecc71;
-  position:absolute;
+.active{
+  background-color: #3C8B69;
+  padding:6px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .active-text{
-  color:#2ecc71;
+  color:#fff;
 }
 
 .-text{
-  color:#000;
+  color:#fff;
 }
 
 .lnavbar{
@@ -206,7 +223,7 @@
   position: fixed;
   box-shadow: 7px 0px 21px 0px rgba(50, 50, 50, 0.10);
   z-index: 99;
-  background-color: #fff;
+  background-color: #0bab64;
 }
 
 .sidebar .sidebar-item{
@@ -220,13 +237,6 @@
   transition:all 0.2s ease;
 }
 
-.sidebar .sidebar-item .item:hover{
-  color:#2ecc71;
-}
-
-.sidebar .sidebar-item:hover{
-  transform: translateX(5px);
-}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

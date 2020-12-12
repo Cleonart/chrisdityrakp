@@ -1,15 +1,15 @@
 <template>
-
 	<div>
 		<Inputs title="Pengaturan Akun" 
-				subtitle="Tambahkan atau sunting akun"
-				:id = "id"
-				:link_to_get="'/akun/get.php?id=' + id"/>
+				subtitle="Tambahkan atau sunting akun" 
+				:id = "id" 
+				:link_to_get="'/akun/get.php?id=' + id"
+				link_to_post="/akun/add_update.php"/>
 	</div>
-
 </template>
 
 <script type="text/javascript">
+
 	import Inputs from '../Component/Input.vue';
 
 	export default{

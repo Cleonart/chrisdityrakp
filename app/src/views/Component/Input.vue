@@ -23,11 +23,18 @@
 
 			</div>
 
-			<div class="col-12 mt-2">
-				<div class="button w-100 is-success" @click="addAccounts()">
+			<!-- simpan -->
+			<div class="col-12 mt-2" style="display: flex;">
+
+				<div class="button is-success mr-2" @click="addData()">
 				    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#send-g"></use></svg>
 				    <span>Simpan</span>
 				</div>
+
+				<div class="button is-danger" @click="back()">
+				   <span>Batal</span>
+				</div>
+
 			</div>
 
 		</div>
@@ -41,7 +48,7 @@
 	const axios = require('axios');
 
 	export default{
-		props : ['id','title', 'subtitle', 'link_to_get', 'lint_to_post'],
+		props : ['id','title', 'subtitle', 'link_to_get', 'link_to_post'],
 		data(){
 			return{
 				data : {}
@@ -50,7 +57,7 @@
 
 		methods : {
 
-			getAccounts : function(){
+			getData : function(){
 				var app = this;
 				startloading(this.$swal);
 
@@ -65,13 +72,47 @@
 					})
 			},
 
-			addAccounts : function() {
+			addData : function() {
+				var app = this;
 				startloading(this.$swal);
+
+				// reconstruct json
+				let reconstruct_json = [];
+				for(let i = 0; i < app.data.body.length; i++){
+					reconstruct_json[i] = app.data.body[i].title;
+				}
+
+				const json_data = JSON.stringify(reconstruct_json);
+
+				axios.post(API_ENDPOINT + this.link_to_post, json_data)
+					 .then(function(response){
+					 	if (response.data.error_code == 'username_exist') {
+					 		app.$swal("Username sudah digunakan", "Silahkan pilih username lain untuk melanjutkan", 'error');
+					 	}
+					 	else if(response.data.error_code == 'success'){
+						 	app.$swal({
+						 		title : "Proses Berhasil",
+						 		text  : "Penyimpanan data berhasil dilakukan",
+						 		confirmButtonText: `Ok`,
+						 		icon : 'success'
+						 	}).then((result) => {
+						 		app.$router.replace('/akun');
+						 	});
+						}
+					 })
+					 .catch(function(error){
+					 	app.$swal("Gagal", "Penyimpanan data gagal", "error");
+					 })
+
+			},
+
+			back : function(){
+				this.$router.replace('/akun');
 			}
 		},
 
 		created(){
-			this.getAccounts();
+			this.getData();
 		}
 	}
 

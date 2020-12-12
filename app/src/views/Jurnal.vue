@@ -29,9 +29,19 @@
 				<!-- TAMBAH JURNAL -->
 				<div>
 					<router-link to="/tambahJurnal" style="text-decoration: none;">
-						<div class="button is-rounded is-success">
+						<div class="button is-rounded is-success mr-2">
 						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
 						    <span>Jurnal</span>
+						</div>
+					</router-link>
+				</div>
+
+				<!-- TAMBAH EDISI -->
+				<div>
+					<router-link to="/tambahEdisi" style="text-decoration: none;">
+						<div class="button is-rounded is-success">
+						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
+						    <span>Edisi</span>
 						</div>
 					</router-link>
 				</div>
@@ -45,7 +55,7 @@
 
 <script type="text/javascript">
 	
-	import {API_ENDPOINT} from '../functions/universal.js';
+	import {API_ENDPOINT, validateLoginCredential} from '../functions/universal.js';
 	import Tables from './Component/Tables.vue';
 	const axios = require('axios');
 
@@ -106,6 +116,7 @@
 		},
 
 		created(){
+			validateLoginCredential(this.$router);
 			this.getData();
 		}
 		

@@ -19,3 +19,22 @@ export function startloading(swal_){
 export function endloading(swal_){
 	swal_.close();
 }
+
+export function validateLoginCredential(routers){
+	if(!loggedIn()){
+    	routers.replace("/login");
+    }
+}
+
+export function loggedIn(){
+	let credential_id = sessionStorage.getItem("id_credential");
+	if(credential_id == null){
+		return false;
+	}
+	return true;
+}
+
+export function getAccountName(){
+	let credential_name = sessionStorage.getItem("name_credential");
+	return credential_name;
+}

@@ -9,10 +9,12 @@ import tambahArtikel from '../views/artikel/tambahArtikel.vue'
 import artikel from '../views/artikel/artikel.vue'
 import laporan_tambahJurnal from '../views/laporan_tambahJurnal'
 import Forum from '../views/Forum.vue'
+import tambahEdisi from '../views//tambahEdisi.vue'
 
 //akun
 import Daftar from '../views/akun/daftar';
 import List from '../views/akun/list';
+import Login from '../views/akun/login';
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,11 @@ const routes = [
     path: '/',
     name: 'Beranda',
     component: Beranda
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/jurnal',
@@ -74,6 +81,11 @@ const routes = [
     path: '/forum',
     name: 'Forum',
     component: Forum
+  },
+  {
+    path: '/tambahEdisi',
+    name: 'tambahEdisi',
+    component: tambahEdisi
   }
 ]
 

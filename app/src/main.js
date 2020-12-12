@@ -14,8 +14,10 @@ import 'vue-select/dist/vue-select.css'
 import 'sweetalert2/dist/sweetalert2.min.css';
  
 Vue.use(VueSweetalert2);
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.component('v-select', vSelect)

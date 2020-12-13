@@ -48,7 +48,16 @@
 
 			</div>
 			
-			<Tables :table_data_head="table_data.head" :table_data_body="filteredData"></Tables>
+			<Tables :table_data_head="table_data.head" :table_data_body="filteredData">
+				<template v-slot:default="slotProps">
+			 		<router-link :to="'/artikel/' + slotProps.body[0].title" style="text-decoration: none">
+				 		<span class="mr-2" :id="'open' + slotProps.body[0].title">
+			  				<svg class="icon is-right has-fill-success has-fill-onhover"><use xlink:href="../../assets/bds-icons.min.svg#edit-g"></use></svg>
+			  			</span>
+			  		</router-link>
+		  			<b-tooltip :target="'open' + slotProps.body[0].title">Edit</b-tooltip>
+			  	</template>
+			</Tables>
 		</div>
 	</div>
 </template>

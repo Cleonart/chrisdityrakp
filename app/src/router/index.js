@@ -57,8 +57,9 @@ const routes = [
     name: 'Artikel',
     component : artikel
   },
+
   {
-    path: '/artikel/tambah',
+    path: '/artikel/:id',
     name: 'Artikel',
     component : tambahArtikel
   },

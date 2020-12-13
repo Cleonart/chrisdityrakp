@@ -137,6 +137,11 @@
 			getData : function(){
 				var app = this;
 				let url = API_ENDPOINT + "/issues/add_artikel_getter.php?id=" + getAccountId();
+
+				if(this.$route.params.id != "tambah"){
+					url = API_ENDPOINT + "/issues/add_artikel_getter.php?article_id=" + this.$route.params.id + "&user_id=" + getAccountId();
+				}
+				
 				startloading(this.$swal);
 				axios.get(url)
 					.then(function(response){
@@ -144,6 +149,9 @@
 						console.log(response.data);
 						app.list.jurnal = response.data.jurnal;
 						app.list.edisi = response.data.edisi;
+						if(app.$route.params.id != "tambah"){
+							app.artikel = response.data.artikel;
+						}
 					})
 					.catch(function(error){
 
@@ -151,9 +159,7 @@
 			},
 
 			addArtikel : function () {
-				//
 				this.formsCheck();
-				//endloading(this.$swal);
 			},
 
 			uploadArtikel : function(){
@@ -193,6 +199,7 @@
 						cancelButtonText : 'Batal',
 						showCancelButton: true
 					})
+
 					.then((result) => {
 						if(result.value){
 							startloading(this.$swal);

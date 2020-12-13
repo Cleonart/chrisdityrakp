@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
 	
-	import {API_ENDPOINT} from '../functions/universal.js';
+	import {API_ENDPOINT, adminAccess} from '../functions/universal.js';
 	import Tables from './Component/Tables.vue';
 	const axios = require('axios');
 
@@ -41,6 +41,7 @@
 
 
 		created(){
+			adminAccess(this.$router);
 			this.getData();
 		}
 		

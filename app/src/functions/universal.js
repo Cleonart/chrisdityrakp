@@ -11,7 +11,7 @@ export function startloading(swal_){
 		timerProgressBar: true,
 		onBeforeOpen: () => {
 		    swal_.showLoading()
-		},
+		},		
 	});
 
 }
@@ -34,7 +34,27 @@ export function loggedIn(){
 	return true;
 }
 
+export function isAdmin(){
+	let credential_stats = sessionStorage.getItem('stats');
+	if(credential_stats == 'c81e728d9d4c2f636f067f89cc14862c'){
+		return false;
+	}
+	return true;
+}
+
+export function adminAccess(routers){
+	if (!isAdmin()){
+		routers.replace("/login");
+	}
+}
+
 export function getAccountName(){
 	let credential_name = sessionStorage.getItem("name_credential");
 	return credential_name;
+}
+
+export function getAccountId(){
+	let credential_id = sessionStorage.getItem("session");
+	return credential_id;
+
 }

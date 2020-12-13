@@ -38,7 +38,7 @@
 
 				<!-- TAMBAH EDISI -->
 				<div>
-					<router-link to="/tambahEdisi" style="text-decoration: none;">
+					<router-link to="/edisi/tes" style="text-decoration: none;">
 						<div class="button is-rounded is-success">
 						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
 						    <span>Edisi</span>

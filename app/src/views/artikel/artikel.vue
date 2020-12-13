@@ -38,7 +38,7 @@
 				</div>
 
 				<div>
-					<router-link to="/tambahArtikel" style="text-decoration: none;">
+					<router-link to="/artikel/tambah" style="text-decoration: none;">
 						<div class="button is-rounded is-success">
 						    <svg class="icon"><use xlink:href="../../assets/bds-icons.min.svg#plus-g"></use></svg>
 						    <span>Artikel</span>
@@ -58,7 +58,7 @@
 </style>
 
 <script type="text/javascript">
-	import {API_ENDPOINT} from '../../functions/universal.js';
+	import {API_ENDPOINT, getAccountId} from '../../functions/universal.js';
 	import Tables from '../Component/Tables.vue';
 	const axios = require('axios');
 
@@ -124,7 +124,7 @@
 			
 			getData : function(){
 				var app = this;
-				axios.get(API_ENDPOINT + "/artikel/get.php")
+				axios.get(API_ENDPOINT + "/artikel/get.php?id=" + getAccountId())
 					 .then(function(response){
 					 	console.log(response.data);
 					 	app.table_data = response.data
@@ -132,7 +132,7 @@
 					 	app.jurnal_edisi = response.data.edition;
 					 })
 					 .catch(function(error){
-
+					 	
 					 })
 			}
 

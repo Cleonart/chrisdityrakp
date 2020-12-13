@@ -45,23 +45,28 @@
 			login : function(){
 				var app = this;
 				const json_data = JSON.stringify({username : app.username, password : md5(app.password)});
+				startloading(this.$swal);
 				axios.post(API_ENDPOINT + "/akun/login.php", json_data)
 					.then(function(response){
 						console.log(response);
+						endloading(app.$swal);
 						if(response.data.error_code == 'success'){
+							app.$swal("Berhasil Login", "Sedang diarahkan ke halaman beranda", "success");
 							sessionStorage.setItem("id_credential", md5(app.username + app.password));
+							sessionStorage.setItem("session", response.data.session);
 							sessionStorage.setItem("name_credential", response.data.pengguna_nama);
 							sessionStorage.setItem("stats",  response.data.stats);
 							app.$router.replace("/");
+							//alert(response.data.session);
 							location.reload();
 						}
 						else{
-							alert("username dan password tidak cocok");
+							app.$swal("Gagal Login", "Username dan Password yang anda<br/>masukan tidak cocok", "error");
 						}
 						
 					})
 					.catch(function(error){
-
+						app.$swal("Permintaan Gagal", "Mohon periksa internet anda", "error");
 					})
 			}
 

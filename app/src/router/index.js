@@ -53,14 +53,14 @@ const routes = [
     component : laporan_tambahJurnal
   },
   {
-    path: '/tambahArtikel',
-    name: 'Tambah_Artikel',
-    component : tambahArtikel
-  },
-  {
     path: '/artikel',
     name: 'Artikel',
     component : artikel
+  },
+  {
+    path: '/artikel/tambah',
+    name: 'Artikel',
+    component : tambahArtikel
   },
   {
     path: '/akun',
@@ -83,7 +83,7 @@ const routes = [
     component: Forum
   },
   {
-    path: '/tambahEdisi',
+    path: '/edisi/:id',
     name: 'tambahEdisi',
     component: tambahEdisi
   }

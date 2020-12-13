@@ -13,7 +13,7 @@
 		  		<th v-for="item in body" v-if="item.type != 'id'" class="subtitle is-5">
 		  			<span v-if="Array.isArray(item.title)" style="font-weight:normal">
 		  				<span v-for="(item_data,index_data) in item.title">
-			  				<span class="tag is-light mb-1" :id="'author' + item_data">{{item_data}};</span>
+			  				<span class="tag is-light mb-1 ml-1" :id="'author' + item_data">{{item_data}};</span>
 			  				<b-tooltip :target="'author' + item_data">Penulis ke {{index_data + 1}}</b-tooltip>
 		  				</span>
 		  			</span>

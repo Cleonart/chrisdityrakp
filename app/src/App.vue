@@ -1,53 +1,5 @@
 <template>
   <div id="app container">
-    <!--
-    <div class="lnavbar">
-      <b-navbar toggleable="lg" type="dark" variant="success">
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
-
-      
-      <b-navbar-nav class="ml-auto">
-
-        <b-nav-item-dropdown right>
-          <template #button-content>
-            <b-icon icon="bell" class="mt-2"></b-icon>
-          </template>
-          <b-dropdown-item href="#" v-for="notif in notification">
-            <table style="border:none">
-              <tr>
-                <td><b-icon :icon="notif.icon" class="mt-2"></b-icon></td>
-                <td><span style="margin-left:7px;width:20px;word-wrap: break-word">{{notif.text}}</span></td>
-              </tr>
-            </table>
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-
-        <b-nav-item-dropdown right>
-          <template #button-content>
-            <b-avatar icon="star-fill"></b-avatar>
-          </template>
-
-          <b-dropdown-item href="#/akun">
-            <div>
-              <p style="text-align:center" class="mb-2 mt-2"><b-avatar variant="primary" text="CL"></b-avatar></p>
-              <p style="text-align:center" class="mb-0"><b>Chrisdityra Lengkey</b></p>
-              <p style="text-align:center" class="mb-2">51099290100</p>
-            </div>
-          </b-dropdown-item>
-
-          <b-dropdown-item href="#" variant="danger"><b-icon icon="power" variant="danger" class="mr-2"></b-icon>Keluar</b-dropdown-item>
-
-        </b-nav-item-dropdown>
-
-      </b-navbar-nav>
-
-    </b-collapse>
-
-  </b-navbar>
-
-    </div>-->
-
     <div class="row" :class="[loggedIn ? 'mr-5' : '']" style="z-index:99">
       <div class="col-lg-3" v-if="loggedIn">
         <div class="sidebar" style="z-index: 0">
@@ -58,14 +10,24 @@
             <div style="border-top: 1px solid #fff;width: 35px"></div>
           </div>
           <span v-for="(item, index) in sidebar_item">
-              <b-link class="item" style="text-decoration: none;" v-if="item.icon" @click="changeRoute(index)" :href="item.ref">
+              <b-link class="item" style="text-decoration: none;" v-if="item.icon && !item.admin" @click="changeRoute(index)" :href="item.ref">
                 <div class="sidebar-item" :class="item.class" style="margin-left: 10px;max-width: 200px">
                   <span :class="item.class +'-text'" class="ml-1" >
                     <span class="ml-3 text-white" style="font-family: 'Averta';font-weight: bold; font-size: 13.2px;">{{item.title}}</span>
                   </span>
                 </div>
               </b-link>
-              <p v-else class="ml-4" style="opacity:0.6;font-size:12px;text-transform:uppercase">
+              <b-link class="item" style="text-decoration: none;" v-else-if="item.icon && isAdmin" @click="changeRoute(index)" :href="item.ref">
+                <div class="sidebar-item" :class="item.class" style="margin-left: 10px;max-width: 200px">
+                  <span :class="item.class +'-text'" class="ml-1" >
+                    <span class="ml-3 text-white" style="font-family: 'Averta';font-weight: bold; font-size: 13.2px;">{{item.title}}</span>
+                  </span>
+                </div>
+              </b-link>
+              <p v-else-if="!item.icon && !item.admin" class="ml-4" style="opacity:0.6;font-size:12px;text-transform:uppercase">
+                <b>{{item.title}}</b>
+              </p>
+              <p v-else-if="!item.icon && isAdmin" class="ml-4" style="opacity:0.6;font-size:12px;text-transform:uppercase">
                 <b>{{item.title}}</b>
               </p>
             </span>
@@ -86,7 +48,7 @@
 
 <script>
   import Chat from './views/chat/chat.vue';
-  import {validateLoginCredential, getAccountName, loggedIn} from './functions/universal.js';
+  import {validateLoginCredential, getAccountName, loggedIn, isAdmin} from './functions/universal.js';
 
   export default{
     components : {
@@ -94,7 +56,9 @@
     },
     data(){
       return{
+        account_stats : '',
         account_name : null,
+        isAdmin : false,
         loggedIn : false,
         auth_level : 1,
         sidebar_item : [
@@ -102,7 +66,8 @@
             title : "Beranda",
             icon  : 'house',
             ref   : '/#/',
-            class : 'active'
+            class : 'active',
+            admin : false
           },
           {
             title : "JURNAL"
@@ -111,25 +76,29 @@
             title : "Jurnal",
             icon : "journals",
             ref   : '/#/jurnal',
-            class : ''
+            class : '',
+            admin : false
           },
           {
             title : "Tambah Jurnal",
             icon : "journal-plus",
             ref   : '/#/tambahJurnal',
-            class : ''
+            class : '',
+            admin : false
           },
           {
             title : "Tambah Edisi",
             icon : "journal-plus",
-            ref : '/#/tambahEdisi',
-            class : ''
+            ref : '/#/edisi/ds',
+            class : '',
+            admin : false
           },
           {
             title : "Laporan Tambah Jurnal",
             icon : "journal-arrow-down",
             ref   : '/#/laporan-tambahJurnal',
-            class : ''
+            class : '',
+            admin : true
           },
           {
             title : "ARTIKEL"
@@ -138,22 +107,26 @@
             title : "Artikel",
             icon : "files",
             ref   : '/#/artikel',
-            class : ''
+            class : '',
+            admin : false
           },
           {
             title : "Tambah Artikel",
             icon : "file-earmark-plus",
-            ref   : '/#/tambahArtikel',
-            class : ''
+            ref   : '/#/artikel/tambah',
+            class : '',
+            admin : false
           },
           {
-            title : "PENGATURAN"
+            title : "PENGATURAN",
+            admin : true
           },
           {
             title : "Akun",
             icon : "person",
             ref   : '/#/akun',
-            class : ''
+            class : '',
+            admin : true
           },
         ],
 
@@ -183,10 +156,14 @@
       }
     },
     created(){
-     console.log(this.$route);
-      this.loggedIn = loggedIn();
       validateLoginCredential(this.$router);
+      this.loggedIn     = loggedIn();
       this.account_name = getAccountName();
+      this.isAdmin      = isAdmin();
+
+    },
+    updated(){
+      validateLoginCredential(this.$router);
     }
   }
 </script>

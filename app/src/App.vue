@@ -82,14 +82,14 @@
           {
             title : "Tambah Jurnal",
             icon : "journal-plus",
-            ref   : '/#/tambahJurnal',
+            ref   : '/#/jurnal/tambah',
             class : '',
             admin : false
           },
           {
             title : "Tambah Edisi",
             icon : "journal-plus",
-            ref : '/#/edisi/ds',
+            ref : '/#/edisi/tambah',
             class : '',
             admin : false
           },

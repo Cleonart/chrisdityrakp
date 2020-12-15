@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<Inputs title="Pengaturan Akun" 
-				subtitle="Tambahkan atau sunting akun" 
+				subtitle="Tambahkan atau sunting akun"
+				landing="/akun"
 				:id = "id" 
 				:link_to_get="'/akun/get.php?id=' + id"
 				link_to_post="/akun/add_update.php"/>

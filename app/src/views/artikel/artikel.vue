@@ -100,6 +100,7 @@
 			
 			editionJurnal(){
 				return this.jurnal_edisi.filter(data => {
+					this.jurnal_edisi_select = null;
 					if(data.jurnal_id == this.jurnal_select || data.value == null){
 						return data;
 					}
@@ -108,20 +109,25 @@
 
 			filteredData(){
 				return this.table_data.body.filter(data => {
+
+					// jika jurnal tidak di select
+					// maka pilih semua artikel dari semua jurnal
 					if(this.jurnal_select == null){
 						let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
 						return data_filter;
 					}
 
-					else{
-						if(this.jurnal_edisi_select != null){
-							if(this.jurnal_edisi_select == data[1].title){
-								let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
+					// menampilkan data dari jurnal tertentu
+					else if(this.jurnal_select != null && this.editionJurnal.length > 0){
+
+						if(this.jurnal_edisi_select == null){
+							if(this.jurnal_select == data[6].title){
+								let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase());
 								return data_filter;
 							}
 						}
-						else{
-							let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase()); 
+						else if(this.jurnal_edisi_select != null && data[1].title == this.jurnal_edisi_select){
+							let data_filter = data[2].title.toLowerCase().includes(this.artikel_search.toLowerCase());
 							return data_filter;
 						}
 					}

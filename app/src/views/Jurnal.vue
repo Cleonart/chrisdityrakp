@@ -28,7 +28,7 @@
 
 				<!-- TAMBAH JURNAL -->
 				<div>
-					<router-link to="/tambahJurnal" style="text-decoration: none;">
+					<router-link to="/jurnal/tambah" style="text-decoration: none;">
 						<div class="button is-rounded is-success mr-2">
 						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
 						    <span>Jurnal</span>
@@ -38,7 +38,7 @@
 
 				<!-- TAMBAH EDISI -->
 				<div>
-					<router-link to="/edisi/tes" style="text-decoration: none;">
+					<router-link to="/edisi/tambah" style="text-decoration: none;">
 						<div class="button is-rounded is-success">
 						    <svg class="icon"><use xlink:href="../assets/bds-icons.min.svg#plus-g"></use></svg>
 						    <span>Edisi</span>
@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
 	
-	import {API_ENDPOINT, validateLoginCredential} from '../functions/universal.js';
+	import {API_ENDPOINT, validateLoginCredential, getAccountId} from '../functions/universal.js';
 	import Tables from './Component/Tables.vue';
 	const axios = require('axios');
 
@@ -79,8 +79,9 @@
 			
 			getData : function(){
 				var app = this;
-				axios.get(API_ENDPOINT + "/jurnal/get.php")
+				axios.get(API_ENDPOINT + "/jurnal/get.php?id=" + getAccountId())
 					 .then(function(response){
+					 	console.log(response);
 					 	app.table_data = response.data;
 					 	app.publikasi_jurnal = response.data.option;
 					 })

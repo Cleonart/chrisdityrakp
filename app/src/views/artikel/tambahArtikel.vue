@@ -154,7 +154,7 @@
 						}
 					})
 					.catch(function(error){
-
+						app.$swal("Gagal Mengambil Data", "Terjadi kesalahan dalam mengambil data", "error");
 					})
 			},
 
@@ -170,10 +170,10 @@
 					.then(function(response){
 						endloading(app.$swal);
 						app.$swal("Proses Berhasil", "Penambahan data berhasil dilakukan", "success");
-						console.log(response);
+						app.$router.replace("/artikel");
 					})
 					.catch(function(error){
-
+						app.$swal("Upload Data Gagal", "Terjadi kesalahan dalam mengirim data", "error");
 					})
 			},
 

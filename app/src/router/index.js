@@ -9,7 +9,7 @@ import tambahArtikel from '../views/artikel/tambahArtikel.vue'
 import artikel from '../views/artikel/artikel.vue'
 import laporan_tambahJurnal from '../views/laporan_tambahJurnal'
 import Forum from '../views/Forum.vue'
-import tambahEdisi from '../views//tambahEdisi.vue'
+import tambahEdisi from '../views/edisi/tambahEdisi.vue'
 
 //akun
 import Daftar from '../views/akun/daftar';
@@ -40,7 +40,7 @@ const routes = [
     component: Dosen
   },
   {
-    path: '/tambahJurnal',
+    path: '/jurnal/tambah',
     name: 'tambahJurnal',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
